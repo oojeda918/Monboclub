@@ -4,17 +4,42 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Slider</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Promos MonboClub</title>
+
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .videoloop {
+        margin: auto;
+        width: 85%;
+      }
+    </style>
+
+    <script>
+      var vid = document.getElementById("videoLoop");
+
+      var videoTimeFrames = requestAnimationFrame(frameRepeat);
+
+      function frameRepeat() {
+        var time = vid.currentTime;
+        executeOnTime(time);
+        videoTimeFrames = requestAnimationFrame(frameRepeat);
+      }
+
+      function executeOnTime(time) {
+        if (time > 5) {
+          vid.currentTime = 0.1;
+        }
+      }
+    </script>
   </head>
   <body>
-    <div class="slider-frame">
-      <ul>
-        <li><img src="combotrago.jpg" alt="" /></li>
-        <li><img src="budweiser.jpg" alt="" /></li>
-        <li><img src="heineken.jpg" alt="" /></li>
-        <li><img src="monbo.jpg" alt="" /></li>
-      </ul>
+    <div class="container">
+      <video class="videoloop" width="720" controls loop>
+        <source src="img/promos monbo.mp4" type="video/mp4" />
+      </video>
     </div>
   </body>
 </html>
